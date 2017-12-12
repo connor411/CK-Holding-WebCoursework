@@ -1,0 +1,240 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.navbar-brand,
+.navbar-nav li a {
+    /*line-height: 30px;
+    height: 30px;
+    padding-top: 0;*/
+    /*padding-top: 30px;
+    padding-bottom: 30px;*/
+    min-height: 100px;
+    color:black;
+}
+
+.logo {
+    font-family: "Roboto",Light, sans-serif;
+    font-size: 40px;
+    /*width: 50%;*/
+    line-height: 30px;
+    /*margin: 0 auto 20px;*/
+    /*padding: 8% 0 0;*/
+}
+
+.navbar-custom {
+    color: #FF6F69;
+    background-color: #FF6F69;
+    border-color: #FF6F69;
+}
+.navbar-right {
+    margin-top: 15px;
+}
+.navbar-inverse .btn-link {
+    color: black;
+}
+
+body {
+    padding-top: 100px;
+    font-family: "Roboto",Light, sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    min-height: 10px;
+    color: black;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    border-color: white;
+    background-color: #C0392B;
+}
+.navbar-inverse .open .dropdown-menu > li > a {
+    line-height: 200px;
+}
+.navbar {
+    font-family: "Roboto",Light, sans-serif;
+}
+.navbar-inverse .navbar-brand{
+    color:black;
+} 
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+    background-color: #FF6F69;
+    color: white;
+}
+
+button.btn.btn-link.navbar-btn.navbar-link:hover {
+    text-decoration: none;
+} 
+
+.nav > li {
+    background-color: #FF6F69;
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus{
+    background-color: #FF6F69;
+} 
+
+
+body {
+    font-family: "Roboto",Light, sans-serif;
+    background-color: #FFEEAD;
+}
+
+article {
+    display: inline-block;
+    min-width: 100%;
+    max-width: 100%;
+    background-color: #DFD19C;
+    /*padding: 10px;*/
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    margin-bottom: 20px;
+}
+
+
+article > header > a > h4 {
+        margin: 10px 10px 0px;
+        color: black;
+}
+
+
+    article > header > a {
+        display: inline-block;
+    }
+    article > footer > p {
+        margin: 10px 10px 10px;
+        text-align: right;
+        color: black;
+    }
+
+    article > footer > span{
+        color:black;
+    }
+
+
+    article > p {
+        margin: 10px 10px 0px;
+        word-break: break-all;
+        color: black;
+    }
+
+.icon {
+    float: right;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    display: none;
+    margin: 10px 10px 0px;
+    color: #FF6F69;
+}
+
+
+/* Gear */
+.icon-gear {
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 4px inset;
+    border-radius: 16px;
+    border: 1px dashed;
+    display: none;
+    top: -1px;
+    left: -1px;
+    color: #FF6F69;
+}
+
+#wrapparForAnnWithComments {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background-color: #DFD19C;
+    height: 100%
+}
+
+#annWithComments {
+    height: 100%;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
+    background-color: transparent;
+}
+.comments {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    background-color: #FFEEAD;
+}
+#commentHeading{
+    color: black;
+    margin-left: 15px;
+
+}
+
+#commentText{
+    margin-left: 15px;
+}
+.line {
+    height: 2px;
+    flex: 1;
+    background: black;
+    margin: 0 10px;
+    margin-bottom: 10px;
+}
+.defaultTextArea {
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #E58A87;
+    color: white;
+    width: 70%;
+    min-width: 70%;
+    border: 0;
+    margin-bottom: 15px;
+    margin-left: 2%;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+    font-family: "Roboto", sans-serif;
+    color: white;
+}
+
+.buttonsubmit {
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #E58A87;
+    color: white;
+    width: 25%;
+    border: 0;
+    padding: 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.form button:hover, .form button:active, .form button:focus {
+    background: #fde1ae;
+}
+
+
+/*#hover-content {
+    display: none;
+}
+
+#parent:hover #hover-content {
+    display: block;
+}*/
+
+

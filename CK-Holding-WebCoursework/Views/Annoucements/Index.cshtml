@@ -1,0 +1,46 @@
+@model IEnumerable<CK_Holding_WebCoursework.Models.Annoucement>
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div>
+    @foreach (var item in Model)
+    {
+        <div>
+        <article>
+            <header>
+                <a asp-action="Details" asp-route-id="@item.Id"><h4><b>@Html.DisplayFor(modelItem => item.Title)</b></h4></a>
+                @*@if (User.IsInRole("Employee"))
+                {
+                    <a href="#" class="icon icon-gear" id="@item.Id" data-toggle="popover" title="asdsd" data-content="asdasdas">asdasd</a>
+
+                }*@
+            </header>
+            
+            @{ 
+                string description = item.Description;
+                if(description.Length > 181)
+                {
+                    string trimedDescription = description.Substring(0, 178);
+                    trimedDescription = trimedDescription + "...";
+                    <p>@trimedDescription</p>
+                }
+                else
+                {
+                    <p>@description</p>
+
+                }
+              }
+            <footer>
+                <p><b>@Html.DisplayFor(modelItem => item.UserName)</b> @Html.DisplayFor(modelItem => item.DateAndTimeOfPost)</p>
+            </footer>
+        </article>
+        </div>
+    }
+</div>
+
+
+

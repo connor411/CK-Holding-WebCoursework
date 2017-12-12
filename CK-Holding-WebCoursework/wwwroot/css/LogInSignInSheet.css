@@ -1,0 +1,115 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FF6F69;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.links {
+    font-family: "Roboto",Light, sans-serif;
+    color: white;
+}
+
+.logo {
+    font-family: "Roboto",Light, sans-serif;
+    font-size: 50px;
+    color: black;
+    width: 50%;
+    line-height: 40px;
+    margin: 0 auto 20px;
+    /*padding: 8% 0 0;*/
+}
+
+.form input[type=Email] {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #E58A87;
+        color: white;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+}
+
+.defaultTextArea{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #E58A87;
+    color: white;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form input[type=Password] {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #E58A87;
+        color: white;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+}
+
+.form button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #FFEEAD;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: black;
+        font-size: 14px;
+        cursor: pointer;
+}
+
+.form button:hover, .form button:active, .form button:focus {
+            background: #fde1ae;
+}
+
+.form .register-form {
+        display: none;
+}
+
+.form .message {
+        margin: 15px 0 0;
+        color: white;
+        font-size: 12px;
+}
+
+.form .message a {
+            color: #FFEEAD;
+            text-decoration: none;
+}
+
+body {
+    background-color: #FFEEAD; /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+    background: -moz-linear-gradient(right, #76b852, #8DC26F);
+    background: -o-linear-gradient(right, #76b852, #8DC26F);
+    background: linear-gradient(to left, #76b852, #8DC26F);*/
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}

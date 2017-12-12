@@ -1,0 +1,7 @@
+﻿Models
+Users
+Comments
+Announcements
+
+comment -> announcement.id, user.id
+announcement -> user.id
