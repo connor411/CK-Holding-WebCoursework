@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CK_Holding_WebCoursework.Configuration;
 using Microsoft.AspNetCore.Hosting;
 
 namespace CK_Holding_WebCoursework
@@ -18,7 +19,8 @@ namespace CK_Holding_WebCoursework
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
-
+           
+           
             host.Run();
         }
     }

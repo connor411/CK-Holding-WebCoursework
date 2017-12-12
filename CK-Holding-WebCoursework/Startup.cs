@@ -54,8 +54,13 @@ namespace CK_Holding_WebCoursework
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
             services.AddMvc();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("CanCreatePost", policy => policy.RequireClaim("Member1"));
+            });
+            
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -81,8 +86,10 @@ namespace CK_Holding_WebCoursework
 
             app.UseStaticFiles();
             app.UseIdentity();
+
             AddUsersSeed.Initialize(context, app.ApplicationServices.GetService<UserManager<ApplicationUser>>()).Wait();
             AddRolesSeed.Initialize(context, app.ApplicationServices.GetService<UserManager<ApplicationUser>>(), app.ApplicationServices.GetService<RoleManager<IdentityRole>>()).Wait();
+
             //new AddRolesSeed(app.ApplicationServices.GetService<UserManager<ApplicationUser>>(),app.ApplicationServices.GetService<RoleManager<IdentityRole>>(), context).Seed();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715

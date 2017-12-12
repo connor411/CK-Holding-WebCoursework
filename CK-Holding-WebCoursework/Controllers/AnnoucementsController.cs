@@ -130,7 +130,8 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // GET: Annoucements/Create
-        [Authorize(Roles = "Employee")]
+        //[Authorize(Roles = "Employee")]
+        [Authorize(Policy = "CanCreatePost")]
         public IActionResult Create()
         {
             return View();

@@ -13,11 +13,6 @@
         <article>
             <header>
                 <a asp-action="Details" asp-route-id="@item.Id"><h4><b>@Html.DisplayFor(modelItem => item.Title)</b></h4></a>
-                @*@if (User.IsInRole("Employee"))
-                {
-                    <a href="#" class="icon icon-gear" id="@item.Id" data-toggle="popover" title="asdsd" data-content="asdasdas">asdasd</a>
-
-                }*@
             </header>
             
             @{ 
