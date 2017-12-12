@@ -21,6 +21,11 @@ namespace CK_Holding_WebCoursework.Configuration
                 return;
             }
             await Seed(um, rm, context);
+            if (context.RoleClaims.Any())
+            {
+                return;
+            }
+            await AddClaims(context, rm);
         }
 
         private static async Task Seed(UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm, ApplicationDbContext context)
@@ -30,31 +35,14 @@ namespace CK_Holding_WebCoursework.Configuration
             string[] UserNames = { "Member1", "Customer1", "Customer2", "Customer3", "Customer4", "Customer5" };
             string[] roleNames = { "Employee", "Customer", "Customer", "Customer", "Customer", "Customer" };
             await AddRolesToUsers(UserNames, roleNames, um, rm);
-            string[] customers = { "Customer1", "Customer2", "Customer3", "Customer4", "Customer5" };
-            await AddClaims(context, rm, customers);
-            
         }
 
-        private static async Task AddClaims(ApplicationDbContext context, RoleManager<IdentityRole> rm, string[] customers)
+        private static async Task AddClaims(ApplicationDbContext context, RoleManager<IdentityRole> rm)
         {
-            if (!context.RoleClaims.Any())
-            {
                 IdentityRole Employee = context.Roles.FirstOrDefault(x => x.Name == "Employee");
                 await rm.AddClaimAsync(Employee, new Claim("CanEditPost", "CanEditPost"));
                 await rm.AddClaimAsync(Employee, new Claim("CanCreatePost", "CanCreatePost"));
                 await rm.AddClaimAsync(Employee, new Claim("CanDeletePost", "CanDeletePost"));
-                foreach(string elem in customers)
-                {
-                    IdentityRole customer = context.Roles.FirstOrDefault(x => x.Name == elem);
-                    await rm.AddClaimAsync(customer, new Claim("CanCreatePost", "CanCreatePost"));
-                }
-
-            }
-            else
-            {
-                return;
-            }
-
         }
 
         private static async Task AddRolesToUsers(string[] UserName, string[] roleNames, UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm)

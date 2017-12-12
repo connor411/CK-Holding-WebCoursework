@@ -5,6 +5,13 @@
         <header>
               <a><h4><b>@Html.DisplayFor(model => model.Annoucement.Title)</b></h4></a>
         </header>
+        @{ 
+            if (Model != null && !String.IsNullOrEmpty(Model.Annoucement.ImageName))
+            {
+                 <img class="annImage" src='@Html.DisplayFor(model => model.Annoucement.ImageName)' />
+            }
+        }
+            
         <p>@Html.DisplayFor(model => model.Annoucement.Description)</p>
         <footer>
             @if (User.IsInRole("Employee"))
@@ -12,13 +19,15 @@
                 <p style="float: left;">View Counter: @Html.DisplayFor(model => model.Annoucement.counter)</p>
             }
             <p style="float: right;"><b>@Html.DisplayFor(model => model.Annoucement.UserName)</b> @Html.DisplayFor(model => model.Annoucement.DateAndTimeOfPost)</p>
-            
+
+
         </footer>
-        
+
+
     </article>
     <div class="comments">
         @foreach (var item in Model.Comments)
-        {
+                {
             <div>
                 <label id="commentHeading">
                     <b>@Html.DisplayFor(modelItem => item.UserName)</b>
@@ -28,9 +37,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </p>
                 @{
-                    int size = Model.Comments.Count;
-                    if (Model.Comments.IndexOf(item) != size - 1)
-                    {
+                        int size = Model.Comments.Count;
+                        if (Model.Comments.IndexOf(item) != size - 1)
+                        {
                         <div class="line"></div>
                     }
                 }

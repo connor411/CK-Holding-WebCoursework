@@ -228,6 +228,13 @@ article > header > a > h4 {
     background: #fde1ae;
 }
 
+.annImage {
+    margin: auto;
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: 600px;
+}
 
 /*#hover-content {
     display: none;

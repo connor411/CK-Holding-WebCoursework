@@ -10,29 +10,36 @@
     @foreach (var item in Model)
     {
         <div>
-        <article>
-            <header>
-                <a asp-action="Details" asp-route-id="@item.Id"><h4><b>@Html.DisplayFor(modelItem => item.Title)</b></h4></a>
-            </header>
-            
-            @{ 
-                string description = item.Description;
-                if(description.Length > 181)
-                {
-                    string trimedDescription = description.Substring(0, 178);
-                    trimedDescription = trimedDescription + "...";
-                    <p>@trimedDescription</p>
+            <article>
+                <header>
+                    <a asp-action="Details" asp-route-id="@item.Id"><h4><b>@Html.DisplayFor(modelItem => item.Title)</b></h4></a>
+                </header>
+                @{
+                    if(Model != null && !String.IsNullOrEmpty(item.ImageName))
+                    {
+                        <img class="annImage" src='@Html.DisplayFor(modelItem => item.ImageName)' />
+                    }   
                 }
-                else
-                {
-                    <p>@description</p>
 
+
+                @{
+        string description = item.Description;
+        if (description.Length > 181)
+        {
+            string trimedDescription = description.Substring(0, 178);
+            trimedDescription = trimedDescription + "...";
+            <p>@trimedDescription</p>
+}
+else
+{
+            <p>@description</p>
+
+}
                 }
-              }
-            <footer>
-                <p><b>@Html.DisplayFor(modelItem => item.UserName)</b> @Html.DisplayFor(modelItem => item.DateAndTimeOfPost)</p>
-            </footer>
-        </article>
+                <footer>
+                    <p><b>@Html.DisplayFor(modelItem => item.UserName)</b> @Html.DisplayFor(modelItem => item.DateAndTimeOfPost)</p>
+                </footer>
+            </article>
         </div>
     }
 </div>

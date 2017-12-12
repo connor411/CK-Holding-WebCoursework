@@ -8,9 +8,10 @@ using CK_Holding_WebCoursework.Data;
 namespace CK_Holding_WebCoursework.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171212172329_Image")]
+    partial class Image
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -24,8 +25,6 @@ namespace CK_Holding_WebCoursework.Data.Migrations
                     b.Property<DateTime>("DateAndTimeOfPost");
 
                     b.Property<string>("Description");
-
-                    b.Property<string>("ImageLocation");
 
                     b.Property<string>("ImageName");
 

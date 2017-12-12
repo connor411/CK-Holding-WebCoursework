@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace CK_Holding_WebCoursework.Models
 
         public int counter { get; set; }
 
+        public string ImageLocation { get; set; }
 
+        public string ImageName { get; set; }
     }
 }

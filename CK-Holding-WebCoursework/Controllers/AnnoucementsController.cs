@@ -9,6 +9,10 @@ using CK_Holding_WebCoursework.Data;
 using CK_Holding_WebCoursework.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace CK_Holding_WebCoursework.Controllers
 {
@@ -17,9 +21,11 @@ namespace CK_Holding_WebCoursework.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _um;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public AnnoucementsController(ApplicationDbContext context, UserManager<ApplicationUser> um)
+        public AnnoucementsController(ApplicationDbContext context, UserManager<ApplicationUser> um, IHostingEnvironment hostingEnvironment)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
             _um = um;
         }
@@ -130,8 +136,8 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // GET: Annoucements/Create
-        //[Authorize(Roles = "Employee")]
-        [Authorize(Policy = "CanCreatePost")]
+        [Authorize(Roles = "Employee")]
+        //[Authorize(Policy = "CanCreatePost")]
         public IActionResult Create()
         {
             return View();
@@ -140,9 +146,10 @@ namespace CK_Holding_WebCoursework.Controllers
         // POST: Annoucements/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description")] Annoucement annoucement)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,ImageLocation")] Annoucement annoucement, IFormFile pic)
         {
             if (ModelState.IsValid)
             {
@@ -150,6 +157,21 @@ namespace CK_Holding_WebCoursework.Controllers
                 annoucement.User = GetCurrentUser();
                 annoucement.UserName = annoucement.User.UserName;
                 annoucement.counter = 0;
+
+                if (pic != null)
+                {
+                    var fileName = Path.Combine(_hostingEnvironment.WebRootPath, Path.GetFileName(pic.FileName));
+
+                    if (!System.IO.File.Exists(fileName))
+                    {
+                        pic.CopyTo(new FileStream(fileName, FileMode.Create));
+                    }
+
+                    
+                    annoucement.ImageLocation = fileName;
+                    annoucement.ImageName = "/" + Path.GetFileName(fileName);
+                }
+
                 _context.Add(annoucement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
