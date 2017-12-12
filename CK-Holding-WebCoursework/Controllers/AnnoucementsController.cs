@@ -67,7 +67,7 @@ namespace CK_Holding_WebCoursework.Controllers
                 .Where(x => x.MyAnnoucement == annoucement).ToListAsync();
 
             viewModel.Comments = comments;
-
+           
 
             return View(viewModel);
         }

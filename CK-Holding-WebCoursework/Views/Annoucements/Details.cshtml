@@ -8,7 +8,9 @@
         @{ 
             if (Model != null && !String.IsNullOrEmpty(Model.Annoucement.ImageName))
             {
-                 <img class="annImage" src='@Html.DisplayFor(model => model.Annoucement.ImageName)' />
+                <a href='@Html.DisplayFor(model => model.Annoucement.ImageName)' data-lightbox="picture_one">
+                <img class="annImage" src='@Html.DisplayFor(model => model.Annoucement.ImageName)' data-lightbox="picture_one"/>
+                </a>
             }
         }
             
@@ -59,7 +61,7 @@
                                
                             
                             
-                                <input type="submit" value="Save" class="buttonsubmit" />
+                                <input type="submit" value="Save" class="buttonsubmit"/>
                             </div>
                         </form>
                     
@@ -189,4 +191,10 @@
     </div>
 }*@
 
-
+<script>
+    lightbox.option({
+        'alwaysShowNavOnTouchDevices': true,
+        'disableScrolling': true,
+        'resizeDuration': 600
+    })
+</script>
