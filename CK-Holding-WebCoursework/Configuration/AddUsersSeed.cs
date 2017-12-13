@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace CK_Holding_WebCoursework.Configuration
 {
+    // A seeding class to create users.
     public class AddUsersSeed
     {
+        // The main method called to start the process.
         public static async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> um)
         {
             context.Database.EnsureCreated();
@@ -22,6 +24,7 @@ namespace CK_Holding_WebCoursework.Configuration
             await Seed(um);
         }
 
+        // Creates the array of RegisterViewModels that holds all the user information. 
         private static async Task Seed(UserManager<ApplicationUser> um)
         { 
             var users = new RegisterViewModel[]
@@ -71,6 +74,8 @@ namespace CK_Holding_WebCoursework.Configuration
                 };
           await AddUsers(users, um);
         }
+
+        // Seed a user to the databse. 
         private static async Task AddUsers(RegisterViewModel[] users, UserManager<ApplicationUser> um)
         {
             foreach (RegisterViewModel vm in users)

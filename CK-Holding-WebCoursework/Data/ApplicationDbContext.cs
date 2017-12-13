@@ -22,8 +22,14 @@ namespace CK_Holding_WebCoursework.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-
+        /// <summary>
+        /// A database table to hold annoucements based on the model Annoucemnt
+        /// </summary>
         public DbSet<CK_Holding_WebCoursework.Models.Annoucement> Annoucements { get; set; }
+
+        /// <summary>
+        /// A database table to hold comments based on the model Comment
+        /// </summary>
         public DbSet<CK_Holding_WebCoursework.Models.Comment> Comments { get; set; }
     }
 }

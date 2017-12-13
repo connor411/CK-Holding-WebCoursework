@@ -73,7 +73,7 @@ namespace CK_Holding_WebCoursework.Controllers
             return View(viewModel);
         }
 
-
+        // Add 1 to the view counter of an annoucement. 
         [ValidateAntiForgeryToken]
         private void AddCounter(int? id)
         {
@@ -86,6 +86,11 @@ namespace CK_Holding_WebCoursework.Controllers
             }
         }
 
+        /// <summary>
+        /// A Details method to display an annoucment and a list of comments from different users. 
+        /// </summary>
+        /// <param name="viewModel">A viewModel with a new comment.</param>
+        /// <returns>The updated viewModel</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Employee, Customer")]
@@ -117,6 +122,11 @@ namespace CK_Holding_WebCoursework.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Get the AnnoucmenetDetailsViewModel from an annoucement in the database.
+        /// </summary>
+        /// <param name="annoucement">The annoucement used to find the viewModel</param>
+        /// <returns>viewModel of the annoucement</returns>
         private async Task<AnnoucementDetailsViewModel> GetAnnoucementDetailsViewModelFromAnnoucement(Annoucement annoucement)
         {
             AnnoucementDetailsViewModel viewModel = new AnnoucementDetailsViewModel();
@@ -128,6 +138,10 @@ namespace CK_Holding_WebCoursework.Controllers
             return viewModel;
         }
 
+        /// <summary>
+        /// Gets the current user who is signed in
+        /// </summary>
+        /// <returns>A application user who is signed in</returns>
         private ApplicationUser GetCurrentUser()
         {
             var userId = _um.GetUserId(HttpContext.User);
@@ -147,7 +161,6 @@ namespace CK_Holding_WebCoursework.Controllers
         // POST: Annoucements/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Employee")]
