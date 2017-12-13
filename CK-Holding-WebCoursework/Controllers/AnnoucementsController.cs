@@ -16,13 +16,25 @@ using Microsoft.AspNetCore.Http;
 
 namespace CK_Holding_WebCoursework.Controllers
 {
-    
+    /// <summary>
+    /// Holds all the logic for annoucements
+    /// </summary>
     public class AnnoucementsController : Controller
     {
+        //The web application database
         private readonly ApplicationDbContext _context;
+        //The user manager used to create, edit and delete users
         private readonly UserManager<ApplicationUser> _um;
+
+        //The hosting enviroment used for storing images
         private readonly IHostingEnvironment _hostingEnvironment;
 
+        /// <summary>
+        /// The constructor of the class to assign the class variables
+        /// </summary>
+        /// <param name="context">The database of the web application</param>
+        /// <param name="um">The user manager used to create, edit and delete users</param>
+        /// <param name="hostingEnvironment">The hosting enviroement used to store images</param>
         public AnnoucementsController(ApplicationDbContext context, UserManager<ApplicationUser> um, IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -31,6 +43,7 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // GET: Annoucements
+        // The index page to list all annoucements
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -40,7 +53,7 @@ namespace CK_Holding_WebCoursework.Controllers
 
 
         // GET: Annoucements/Details/5
-        //[Authorize(Roles = "Employee, Customer")]
+        //The get the details view model of an annoucement based on id
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
@@ -151,8 +164,8 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // GET: Annoucements/Create
+        // returns the create view for creating annoucements
         [Authorize(Roles = "Employee")]
-        //[Authorize(Policy = "CanCreatePost")]
         public IActionResult Create()
         {
             return View();
@@ -161,6 +174,8 @@ namespace CK_Holding_WebCoursework.Controllers
         // POST: Annoucements/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // This method is created if a new annoucement has been created. 
+        // The date and time, the current user and a new counter is added to the annoucement
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Employee")]
@@ -195,6 +210,8 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // GET: Annoucements/Edit/5
+        // This method is called when a user clicks edit on an annoucement.
+        // This will return the edit view for an annoucement
         [Authorize(Roles = "Employee")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -215,6 +232,8 @@ namespace CK_Holding_WebCoursework.Controllers
         // POST: Annoucements/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // If the user has made a change in the edit view this method is called
+        // The method updates the database with the new data
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Employee")]
@@ -252,6 +271,7 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // GET: Annoucements/Delete/5
+        // Displays the delete view for an annoucement based on id.
         [Authorize(Roles = "Employee")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -278,6 +298,7 @@ namespace CK_Holding_WebCoursework.Controllers
         }
 
         // POST: Annoucements/Delete/5
+        // This method deletes the annoucement and the comments for that annoucement.
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Employee")]

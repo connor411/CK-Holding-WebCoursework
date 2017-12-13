@@ -13,18 +13,23 @@ namespace CK_Holding_WebCoursework.Models
     public class Annoucement
     {
         // The key for an annoucement
+        [Key]
         public int Id { get; set; }
 
-        // The user who posted the annoucement
+        // The user who posted the 
         public virtual ApplicationUser User { get; set; }
 
         // The username of the user who posted the annoucement
         public string UserName { get; set; }
 
         // The title of an annoucement
+        [Required]
+        [StringLength(180)]
         public string Title { get; set; }
 
         // The description of an annoucement
+        [Required]
+        [StringLength(400)]
         public string Description { get; set; }
 
         // The date and time when the annoucement was posted
