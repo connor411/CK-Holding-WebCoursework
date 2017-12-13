@@ -50,6 +50,7 @@ namespace CK_Holding_WebCoursework.Configuration
             for(int i = 0; i< UserName.Length; i++)
             {
                 await AddRoleToUser(UserName[i], roleNames[i], um, rm);
+             
             }
         }
 
@@ -58,13 +59,30 @@ namespace CK_Holding_WebCoursework.Configuration
             foreach(string role in roles)
             {
                 var AddRole = await rm.CreateAsync(new IdentityRole(role));
+                if (AddRole.Succeeded)
+                {
+                    Console.Write("Added Role: " + role);
+                }
+                else
+                {
+                    Console.Write("Role: " + role + " was not created");
+                }
+               
             }
         }
 
         private static async Task AddRoleToUser(string UserName, string roleName, UserManager<ApplicationUser> um, RoleManager<IdentityRole> rm)
         {
             ApplicationUser user = await um.FindByNameAsync(UserName);
-            var ir = await um.AddToRoleAsync(user, roleName);
+            var userRole = await um.AddToRoleAsync(user, roleName);
+            if (userRole.Succeeded)
+            {
+                Console.Write("Added role: " + roleName + " To User: " + UserName);
+            }
+            else
+            {
+                Console.Write("Role: " + roleName + " was not created");
+            }
         }
     }
 }

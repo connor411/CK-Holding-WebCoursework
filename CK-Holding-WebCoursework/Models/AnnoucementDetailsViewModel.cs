@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace CK_Holding_WebCoursework.Models
         public List<Comment> Comments { get; set; }
         public int AnnoucementID { get; set; }
 
+        
         public string Description { get; set; }
 
         //public ApplicationUser User { get; set; }

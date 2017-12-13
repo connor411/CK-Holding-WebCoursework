@@ -77,7 +77,24 @@ namespace CK_Holding_WebCoursework.Configuration
             {
                 var user = new ApplicationUser { UserName = vm.UserName, Email = vm.Email };
                 var AddUser = await um.CreateAsync(user);
+                if (AddUser.Succeeded)
+                {
+                    Console.Write("Added User: " + vm.UserName);
+                }
+                else
+                {
+                    Console.Write("User: " + vm.UserName + " was not created");
+                }
                 var AddPassword = await um.AddPasswordAsync(user, vm.Password);
+                if (AddPassword.Succeeded)
+                {
+                    Console.Write("Added Password for: " + vm.UserName);
+                }
+                else
+                {
+                    Console.Write("User: " + vm.UserName + "'s password was not created");
+                }
+                Console.Write("Added Password for: " + vm.UserName);
             }
         }
     }

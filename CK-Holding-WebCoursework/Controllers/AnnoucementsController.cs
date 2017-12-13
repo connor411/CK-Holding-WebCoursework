@@ -41,6 +41,7 @@ namespace CK_Holding_WebCoursework.Controllers
 
         // GET: Annoucements/Details/5
         //[Authorize(Roles = "Employee, Customer")]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             
@@ -149,6 +150,7 @@ namespace CK_Holding_WebCoursework.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,ImageLocation")] Annoucement annoucement, IFormFile pic)
         {
             if (ModelState.IsValid)
