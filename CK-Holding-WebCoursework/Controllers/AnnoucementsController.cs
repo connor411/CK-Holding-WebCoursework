@@ -193,6 +193,7 @@ namespace CK_Holding_WebCoursework.Controllers
             {
                 return NotFound();
             }
+
             return View(annoucement);
         }
 
@@ -204,6 +205,7 @@ namespace CK_Holding_WebCoursework.Controllers
         [Authorize(Roles = "Employee")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description")] Annoucement annoucement)
         {
+           
             if (id != annoucement.Id)
             {
                 return NotFound();
@@ -213,6 +215,7 @@ namespace CK_Holding_WebCoursework.Controllers
             {
                 try
                 {
+                   
                     annoucement.DateAndTimeOfPost = DateTime.Now;
                     _context.Update(annoucement);
                     await _context.SaveChangesAsync();

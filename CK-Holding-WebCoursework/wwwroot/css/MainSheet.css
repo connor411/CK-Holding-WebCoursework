@@ -211,11 +211,20 @@ article > header > a > h4 {
     color: white;
 }
 
+.centerButtons {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: 600px;
+}
+
 .buttonsubmit {
     display: inline-block;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
+    text-align: center;
     background: #E58A87;
     color: white;
     width: 25%;
